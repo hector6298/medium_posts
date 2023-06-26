@@ -1,0 +1,8 @@
+streamz
+pyviz
+colorcet
+hvplot
+panel
+bokeh
+azure-eventhub
+azure-identity

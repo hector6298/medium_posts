@@ -1,0 +1,10 @@
+config/
+.env
+commands.sh
+*.pkl
+.vscode/
+.azureml/
+.devcontainer/
+.ipynb_checkpoints/
+logs/
+__pycache__/

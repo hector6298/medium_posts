@@ -1,0 +1,54 @@
+{
+    "creator_user_name": "<email>",
+    "run_as_user_name": "<user>",
+    "run_as_owner": true,
+    "settings": {
+        "name": "autoloader_functions",
+        "email_notifications": {
+            "no_alert_for_skipped_runs": false
+        },
+        "timeout_seconds": 0,
+        "max_concurrent_runs": 1,
+        "tasks": [
+            {
+                "task_key": "autoloader_functions",
+                "notebook_task": {
+                    "notebook_path": "/Repos/<user>/azFunctionsDatabricks/dbBusinessLogic/autoLoaderExample",
+                    "base_parameters": {
+                        "data_source": "/dbfs/mnt/test/yellow_trip_data",
+                        "table_name": "yellow_trip_data",
+                        "checkpoint_directory": "/tmp/"
+                    },
+                    "source": "WORKSPACE"
+                },
+                "job_cluster_key": "Shared_job_cluster",
+                "timeout_seconds": 0,
+                "email_notifications": {}
+            }
+        ],
+        "job_clusters": [
+            {
+                "job_cluster_key": "Shared_job_cluster",
+                "new_cluster": {
+                    "spark_version": "10.4.x-scala2.12",
+                    "spark_conf": {
+                        "spark.databricks.delta.preview.enabled": "true"
+                    },
+                    "azure_attributes": {
+                        "first_on_demand": 1,
+                        "availability": "ON_DEMAND_AZURE",
+                        "spot_bid_max_price": -1
+                    },
+                    "node_type_id": "Standard_DS3_v2",
+                    "spark_env_vars": {
+                        "PYSPARK_PYTHON": "/databricks/python3/bin/python3"
+                    },
+                    "enable_elastic_disk": true,
+                    "runtime_engine": "STANDARD",
+                    "num_workers": 8
+                }
+            }
+        ],
+        "format": "MULTI_TASK"
+    }
+}
